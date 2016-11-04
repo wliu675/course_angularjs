@@ -1,0 +1,13 @@
+<h1>My Info</h1>
+<div ng-if="!myinfoCtrl.isLogedIn">
+    Not Signed Up Yet. Sign up Now!
+</div>
+<div ng-if="myinfoCtrl.isLogedIn">
+    Name: {{myinfoCtrl.userInfo.firstname}} {{myinfoCtrl.userInfo.lastname}}<br>
+    Email: {{myinfoCtrl.userInfo.email}}<br>
+    Phone: {{myinfoCtrl.userInfo.phone}}<br>
+    Favorite Dish: <br>
+    <img class="img-responsive" width="250" height="150" ng-src="{{myinfoCtrl.basePath}}/images/{{myinfoCtrl.favouriteDish.short_name}}.jpg">
+    Title: {{myinfoCtrl.favouriteDish.name}}<br>
+    Description: {{myinfoCtrl.favouriteDish.description}}<br>
+</div>

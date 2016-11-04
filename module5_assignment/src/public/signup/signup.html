@@ -1,0 +1,72 @@
+<h1>Sign Up</h1>
+<fieldset>
+<legend></legend>
+<form name='regForm' novalidate>
+<input type="text" name="firstname" placeholder="Firstname"
+  ng-model="signupCtrl.user.firstname"
+  required
+  minlength="1"
+  ng-maxlength="10" style="color:black">
+  {{ signupCtrl.user.firstname }}
+  <span
+    ng-if="(regForm.firstname.$error.minlength || regForm.firstname.$error.required) && regForm.firstname.$touched">
+    Please enter Firstname
+  </span>
+  <br>
+
+  <input type="text" name="lastname" placeholder="Lastname"
+    ng-model="signupCtrl.user.lastname"
+    required
+    minlength="1"
+    ng-maxlength="10" style="color:black">
+    {{ signupCtrl.user.lastname }}
+    <span
+      ng-if="(regForm.lastname.$error.minlength || regForm.lastname.$error.required) && regForm.lastname.$touched">
+      Please enter Lastname
+    </span>
+    <br>
+
+<input type="email" name="email" placeholder="Email"
+  ng-model="signupCtrl.user.email"
+  required style="color:black">
+  <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+    Must be a valid email address: handle@domain format
+  </span>
+  <br>
+
+<input type="text" name="phone" placeholder="Phone ###-###-####"
+  ng-model="signupCtrl.user.phone"
+  pattern="(\d{3})-(\d{3})-(\d{4})" style="color:black">
+  <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+    Phone must be in the format ###-###-####.
+  </span>
+  <br>
+
+    <input type="text" name="menunumber" placeholder="Menu number"
+      ng-model="signupCtrl.user.menunumber"
+      required
+      minlength="1"
+      ng-maxlength="10" style="color:black">
+      {{ signupCtrl.user.menunumber }}
+      <span
+        ng-if="(regForm.menunumber.$error.minlength || regForm.menunumber.$error.required) && regForm.menunumber.$touched">
+        Please enter Menu number
+      </span>
+      <br>
+
+<button
+  ng-disabled="regForm.$invalid"
+  ng-click="signupCtrl.submit(signupCtrl.user)">Submit</button>
+
+  <div style="margin-top: 10px;display:none">
+    Form valid? {{ regForm.$valid }}
+  </div>
+</form>
+</fieldset>
+
+<div id="info" ng-if="signupCtrl.completed && signupCtrl.flag">
+    Your information has been saved.
+</div>
+<div id="info" ng-if="signupCtrl.completed && !signupCtrl.flag">
+    No such menu number exists
+</div>
